@@ -25,6 +25,7 @@ sink()
 
 ```{r functions, echo=FALSE}
 
+#Loading in functions
 source("functions/Adelie_analysis_functions.r")
 
 ```
@@ -54,6 +55,7 @@ exploring_plot <- ggplot(adelies, aes(body_mass_g, flipper_length_mm))+
   labs(x = 'body mass (g)', y = 'flipper length (mm)', title = 'Adelie body mass against flipper length')+
   theme_bw()
 
+#Saving the graph
 ggsave(filename = "figures/data_exploration.png",
        plot = exploring_plot,
        height = 8 ,
@@ -66,7 +68,7 @@ exploring_plot
 
 ### Hypotheses
 
-The above graph shows the data for Adelie penguins in the palmerpenguins package. My null hypothesis is that flipper length in these penguins is not predicted by body mass, and so the linear regression model is not statistically significant. My alternative hypothesis is that body mass does predict flipper length in this species, and so the regression model is signficant.
+The above graph shows the data for Adelie penguins in the palmerpenguins package. My null hypothesis is that flipper length in these penguins is not predicted by body mass, and so a linear regression model will not be statistically significant. My alternative hypothesis is that body mass does predict flipper length in this species, and so the regression model will be signficant.
 
 ### Statistical Methods
 
@@ -91,7 +93,7 @@ anova(model1)
 
 ### Results & Discussion
 
-Firstly the QQplot produced showed that the residuals of this model were normally distributed, and the data also follows the other assumptions of a linear regression and so no transformation was needed. The equation of the regression line of body mass against flipper length is y = 0.007x + 165.2 which shows a positive relationship between the two variables. As body mass increases by one unit, flipper length increases by 0.007 units. We can see that both the gradient and the intercept are significantly different to 0, both with a p value of less than 0.05.
+Firstly the QQplot produced showed that the residuals of this model were normally distributed, and the data also follows the other assumptions of a linear regression and so no transformation was needed. The equation of the regression line of body mass against flipper length is y = 0.007x + 165.2 which shows a positive relationship between the two variables. As body mass increases by 1g, flipper length increases by 0.007mm. We can see that both the gradient and the intercept are significantly different to 0, both with a p value of less than 0.05.
 
 I then did an ANOVA to test the statistical significance of the regression between body mass and flipper length, which resulted in a p value of less than 0.001, showing that we can reject the null hypothesis and accept the alternative hypothesis, that body mass predicts flipper length. The R2 value of the model was 0.214, showing that body mass explains 21% of variation in flipper length. This is a moderate amount, but suggests there may also be other factors which explain variation in flipper length and so by itself, body mass isn't a perfect predictor of flipper length.
 
